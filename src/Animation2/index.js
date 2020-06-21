@@ -1,28 +1,41 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useRef} from "react";
+import { gsap } from "gsap";
 
-import { Flower } from "./Flower";
-import { StyledText, StyledDiv, Container } from "./styles";
-import { TimelineMax, TweenLite, TweenMax } from "gsap";
+import { StyledText, StyledFlower } from "./styles";
+import {Title, FlexWrapper, AnimationContainer} from "../Typography";
+import {Button} from "../components/Button";
 
 export const Animation2 = () => {
-  const timeLine = new TimelineMax();
+  const wrapper = useRef(null);
+  let tl;
 
   useEffect(() => {
-    timeLine
-      .fromTo("#flower", 2, { y: 50 }, { y: 0 })
-      .to("#flower", 1, { y: 13 });
-    TweenLite
-      .to("#flower", 2, {rotation:360});
-    TweenMax.from("#blossom", 3, {css:{scale:.8, opacity:.5}})
+
+    const flower = document.getElementById('flower');
+    const blossom = document.getElementById('blossom');
+
+    gsap.set([flower, blossom], {autoAlpha: 0});
+
+    tl = gsap.timeline({defaults: {ease: 'power3.inOut'}})
+
+    tl.fromTo(flower, {scale: 0}, {duration: 5, scale: 1, rotate: '360%', autoAlpha: 1})
+    tl.fromTo(flower, {rotate: '0'}, {duration: 5, rotate: '360%', yoyo: true, repeat: -1})
+    tl.fromTo(blossom, {scale: 0.7}, {duration: 5, scale: 1 , autoAlpha: 1}, 1)
   });
 
+  const handleAnimation = (e) => {
+    tl.paused(!tl.paused());
+    e.target.innerHTML = tl.paused() ? "play" : "pause";
+  }
+
   return (
-    <Container>
-      <p>Blossom</p>
-      <StyledDiv>
-        <Flower />
+    <AnimationContainer>
+      <Title>Blossom</Title>
+      <FlexWrapper>
+        <StyledFlower id="flower"/>
         <StyledText id="blossom">Blossom</StyledText>
-      </StyledDiv>
-    </Container>
+      </FlexWrapper>
+      <Button onClick={handleAnimation}>pause</Button>
+    </AnimationContainer>
   )
 };
