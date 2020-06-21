@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect} from "react";
 import { gsap } from "gsap";
 
 import { StyledText, StyledFlower } from "./styles";
@@ -6,7 +6,6 @@ import {Title, FlexWrapper, AnimationContainer} from "../Typography";
 import {Button} from "../components/Button";
 
 export const Animation2 = () => {
-  const wrapper = useRef(null);
   let tl;
 
   useEffect(() => {
