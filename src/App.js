@@ -4,6 +4,7 @@ import { Body, MainTitle } from "./Typography";
 import { Animation1 } from "./Animation1";
 import { Animation2 } from "./Animation2";
 import { Animation3 } from "./Animation3";
+import { Animation4 } from "./Animation4";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
      <Animation2 />
      <MainTitle>Animations 2020</MainTitle>
      <Animation3 />
+     <Animation4 />
     </Body>
   );
 }
