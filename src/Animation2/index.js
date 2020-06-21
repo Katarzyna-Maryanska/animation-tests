@@ -9,7 +9,6 @@ export const Animation2 = () => {
   let tl;
 
   useEffect(() => {
-
     const flower = document.getElementById('flower');
     const blossom = document.getElementById('blossom');
 

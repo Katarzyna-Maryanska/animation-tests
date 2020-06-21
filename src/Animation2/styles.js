@@ -6,7 +6,7 @@ export const StyledFlower = styled(Flower)`
   width: 2rem;
   height: 2rem;
   fill: #E68EB6;
-  margin-right: 0.7rem;
+  margin-right: 1rem;
 `;
 
 export const StyledText = styled.h3`
