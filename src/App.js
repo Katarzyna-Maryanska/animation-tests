@@ -5,6 +5,7 @@ import { Animation1 } from "./Animation1";
 import { Animation2 } from "./Animation2";
 import { Animation3 } from "./Animation3";
 import { Animation4 } from "./Animation4";
+import { Animation5 } from "./Animation5";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
      <MainTitle>Animations 2020</MainTitle>
      <Animation3 />
      <Animation4 />
+     <Animation5 />
     </Body>
   );
 }

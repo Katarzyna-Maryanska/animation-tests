@@ -32,6 +32,10 @@ export const Animation1 = () => {
     e.target.innerHTML = TweenMax.paused() ? "play" : "pause";
   }
 
+  const handleRestart = (e) => {
+    TweenMax.restart();
+  }
+
   return (
     <AnimationContainer>
       <Title>Pantone palette</Title>
@@ -44,6 +48,7 @@ export const Animation1 = () => {
         </svg>
       </Wrapper>
       <Button onClick={handleAnimation}>pause</Button>
+      <Button onClick={handleRestart}>restart</Button>
     </AnimationContainer>
   )
 };

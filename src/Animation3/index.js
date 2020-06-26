@@ -21,14 +21,14 @@ export const Animation3 = () => {
     const moon = elements.getElementById('moon');
     const earth = elements.getElementById('earth');
 
-    gsap.set([earth, background], {autoAlpha: 1});
-    gsap.set([...sky.children, moon, signal, astronaut, rocket], {autoAlpha: 0});
+    gsap.set([earth, background, rocket], {autoAlpha: 1});
+    gsap.set([...sky.children, moon, signal, astronaut], {autoAlpha: 0});
     gsap.set(rocket, {transformOrigin: '30% 34%'});
     gsap.set(signal, {rotate: '180%', transformOrigin: '50% 30%'});
 
     tl = gsap.timeline({defaults: {ease: 'power3.inOut'}})
     tlElastic = gsap.timeline({defaults: {ease: 'elastic.easeIn'}})
-    tl.fromTo(rocket, {x: '-=20', scale: 0, rotate: '360%'}, {duration: 5, x: '+=18', scale: 1, rotate: '2%', autoAlpha: 1})
+    tl.fromTo(rocket, {x: '-=20', scale: 0, rotate: '360%'}, {duration: 5, x: '+=18', scale: 1, rotate: '2%'})
     tl.fromTo(moon, {y: '+=100'}, {duration: 3, y: '-=100', autoAlpha: 1}, 1)
     tl.fromTo(rocket, {y: '-=30', rotate: '2%' }, {duration: 4, y: '+=30', rotate: '0' })
     tl.to(sky.children, {duration: 5, autoAlpha: 1, stagger: 0.3},1)
@@ -40,7 +40,12 @@ export const Animation3 = () => {
   const handleAnimation = (e) => {
     tl.paused(!tl.paused());
     tlElastic.paused(!tlElastic.paused());
-    e.target.innerHTML = tl.paused() && tlElastic.paused() ? "play" : "pause";
+    e.target.innerHTML = tl.paused() && tlElastic.paused() ? ">>" : "||";
+  }
+
+  const handleRestart = (e) => {
+    tl.restart();
+    tlElastic.restart();
   }
 
   return (
@@ -49,7 +54,8 @@ export const Animation3 = () => {
       <Wrapper ref={wrapper}>
         <Scene/>
       </Wrapper>
-      <Button onClick={handleAnimation}>pause</Button>
+      <Button onClick={handleAnimation}>||</Button>
+      <Button onClick={handleRestart}>restart</Button>
     </AnimationContainer>
   )
 };

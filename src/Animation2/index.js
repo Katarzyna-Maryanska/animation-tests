@@ -23,7 +23,11 @@ export const Animation2 = () => {
 
   const handleAnimation = (e) => {
     tl.paused(!tl.paused());
-    e.target.innerHTML = tl.paused() ? "play" : "pause";
+    e.target.innerHTML = tl.paused() ? ">>" : "||";
+  }
+
+  const handleRestart = (e) => {
+    tl.restart();
   }
 
   return (
@@ -33,7 +37,8 @@ export const Animation2 = () => {
         <StyledFlower id="flower"/>
         <StyledText id="blossom">Blossom</StyledText>
       </FlexWrapper>
-      <Button onClick={handleAnimation}>pause</Button>
+      <Button onClick={handleAnimation}>||</Button>
+      <Button onClick={handleRestart}>restart</Button>
     </AnimationContainer>
   )
 };

@@ -8,7 +8,7 @@ import {Button} from "../components/Button";
 export const Animation4 = () => {
   const wrapper = useRef(null);
 
-  let tl;
+  let tl, tlSun, tlDog, tlFilter;
 
   useEffect(() => {
     const [elements] = wrapper.current.children;
@@ -26,33 +26,58 @@ export const Animation4 = () => {
     const leaves3 = elements.getElementById('leaves3');
     const mountains = elements.getElementById('mountains');
     const sun = elements.getElementById('sun');
+    const sunpath = elements.getElementById('sunpath');
     const ground = elements.getElementById('ground');
 
-    gsap.set([...stars.children, ...something.children, dog, ball], {autoAlpha: 0});
-    gsap.set([ guy, girl, ...trees.children, mountains, trees, ...leaves1.children, ...leaves2.children, ...leaves3.children, sun, ground], {autoAlpha: 1});
-    // gsap.set(rocket, {transformOrigin: '30% 34%'});
-    // gsap.set(signal, {rotate: '180%', transformOrigin: '50% 30%'});
+    gsap.set([ ...stars.children, ...something.children, sunpath], {autoAlpha: 0});
+    gsap.set([filter, guy, girl, dog, ball, ...trees.children, mountains, trees, ...leaves1.children, ...leaves2.children, ...leaves3.children, sun, ground], {autoAlpha: 1});
+    gsap.set(ball, {transformOrigin: '50% 50%'});
 
+    tlFilter = gsap.timeline({defaults: {ease: 'power3.inOut', repeat: -1, yoyo: true, repeatDelay: 5}})
     tl = gsap.timeline({defaults: {ease: 'power3.inOut'}})
-    tl.fromTo(leaves1.children, {x: '-=10', y: '-=5', scale: 0.95, rotate: '0%'}, {duration: 3, x: '+=10', y: '+=5', scale: 1, rotate: '3%', autoAlpha: 1, stagger: 0.2, yoyo: true,  repeat: -1}, 1)
-    tl.fromTo(leaves2.children, {x: '-=11', y: '-=4', scale: 0.95, rotate: '0%'}, {duration: 3, x: '+=11', y: '+=4', scale: 1, rotate: '2%', autoAlpha: 1, stagger: 0.3, yoyo: true,  repeat: -1}, 1)
-    tl.fromTo(leaves3.children, {x: '-=9', y: '-=3', scale: 0.95, rotate: '2%'}, {duration: 3, x: '+=9', y: '+=3', scale: 1, rotate: '3%', autoAlpha: 1, stagger: 0.2, yoyo: true,  repeat: -1}, 1)
-    // tl.fromTo(guy, {x: '-=10', y: '-=200', scale: 0, rotate: '360%'}, {duration: 5, x: '-=10', y: '+=200', scale: 1, rotate: '0%', autoAlpha: 1},1)
-    tl.fromTo(guy, {x: '-=300', rotate: '0%'}, {duration: 5, x: '+=200', rotate: '-5%'}, 1)
-    .fromTo(guy, {x: '+=200', rotate: '0%'}, {duration: 5, x: '+=400', rotate: '-5%'}, 5)
-    .fromTo(guy, {x: '+=400', rotate: '0%'}, {duration: 5, x: '+=700', rotate: '-5%'}, 10)
-    // tl.fromTo(guy, {rotate: '0%'}, {duration: 5, rotate: '10%', yoyo: true}, 5)
-    // tl.fromTo(moon, {y: '+=100'}, {duration: 3, y: '-=100', autoAlpha: 1}, 1)
-    // tl.fromTo(rocket, {y: '-=30', rotate: '2%' }, {duration: 4, y: '+=30', rotate: '0' })
-    // tl.to(sky.children, {duration: 5, autoAlpha: 1, stagger: 0.3},1)
-    // tlElastic.fromTo(astronaut, {x: '-=300', scale: 0.75}, {duration: 3, x: '+=300', scale: 0.85, autoAlpha: 1}, 9)
-    // tlElastic.fromTo(astronaut, {y: '-=10'}, { duration: 2, y: '+=90', yoyo: true, repeat: -1}, 11)
-    // tlElastic.fromTo(signal, {x: '-=100', scale: 0}, {delay: 0.33, duration: 2, x: '+=100', scale: 1, yoyo: true, repeat: -1, autoAlpha: 1})
-  }, [])
+    tlSun = gsap.timeline({defaults: {ease: 'power0', repeat: -1, repeatDelay: 10}})
+    tlDog = gsap.timeline( {ease: 'power0'})
 
+
+    tlFilter.fromTo(filter, {x: '+=0', opacity: 0.3, autoAlpha: 1}, {duration: 5, x: '-=1000', autoAlpha: 0})
+        .to(filter, {duration: 5, x: '-=0',opacity: 0.3, autoAlpha: 1})
+    tlSun.to(sun, {duration: 10, motionPath:{
+            path: sunpath,
+            align: sunpath,
+            autoRotate: true,
+            alignOrigin: [0, 0.4],
+            start: 0,
+            end: 1.
+          }})
+    tl.fromTo(leaves1.children, {x: '-=10', y: '-=5', scale: 0.95}, {duration: 3, x: '+=10', y: '+=5', scale: 1, autoAlpha: 1, stagger: 0.1, yoyo: true,  repeat: -1}, 1)
+    tl.fromTo(leaves2.children, {x: '-=11', y: '-=4', scale: 0.95}, {duration: 3, x: '+=11', y: '+=4', scale: 1, autoAlpha: 1, stagger: 0.1, yoyo: true,  repeat: -1}, 1)
+    tl.fromTo(leaves3.children, {x: '-=9', y: '-=3', scale: 0.95}, {duration: 3, x: '+=9', y: '+=3', scale: 1, autoAlpha: 1, stagger: 0.1, yoyo: true,  repeat: -1}, 1)
+    tl.fromTo(guy, {x: '-=300', rotate: '2%'}, {duration: 3, x: '+=200', rotate: '-2%'}, 1)
+        .to(guy,{duration: 3, x: '+=400', rotate: '2%'})
+        .to(guy,{duration: 3, x: '+=700', rotate: '-2%'})
+    tlDog.fromTo(ball, {x: '+=300'}, {duration: 5, x: '-=300'},1)
+        .to(ball, {delay: 1, duration: 5, x: '-=850'})
+        .fromTo(ball, {y: '-=30'}, {y: '+=50', yoyo: true, repeat: -1, ease: 'none'}, 1)
+        .to(ball,  {duration: 0.3, rotate: '360%', repeat: -1, ease: 'none'}, 1)
+    tlDog.fromTo(dog, {x: '+=300'}, { delay: 0.5, duration: 5, x: '-=340'},1)
+        .to(dog, {duration: 5, x: '-=850'})
+        .fromTo(dog, {y: '-=50', rotate: '-5%'}, {delay: 0.2, y: '+=50', rotate: '+5%', yoyo: true, repeat: -1}, 1)
+
+
+  }, [])
   const handleAnimation = (e) => {
+    tlFilter.paused(!tlFilter.paused());
     tl.paused(!tl.paused());
-    e.target.innerHTML = tl.paused() ? "play" : "pause";
+    tlSun.paused(!tlSun.paused());
+    tlDog.paused(!tlDog.paused());
+    e.target.innerHTML = tl.paused() ? ">>" : "||";
+  }
+
+  const handleRestart = (e) => {
+    tlFilter.restart();
+    tl.restart();
+    tlSun.restart();
+    tlDog.restart()
   }
 
   return (
@@ -61,7 +86,8 @@ export const Animation4 = () => {
       <Wrapper ref={wrapper}>
         <Scene/>
       </Wrapper>
-      <Button onClick={handleAnimation}>pause</Button>
+      <Button onClick={handleAnimation}>||</Button>
+      <Button onClick={handleRestart}>restart</Button>
     </AnimationContainer>
   )
 };

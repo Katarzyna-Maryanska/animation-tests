@@ -14,6 +14,7 @@ export const Button = styled.button`
   outline: none;
   transition: all 200ms;
   cursor: pointer;
+  margin-left: 1rem;
 
   &:hover {
     box-shadow: 0 0.5rem 1.3rem 0 rgba(0,0,0,.1);
