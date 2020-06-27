@@ -4,6 +4,7 @@ import gsap from "gsap";
 import {ReactComponent as Scene} from "./fun.svg";
 import {Title, Wrapper, AnimationContainer} from "../Typography";
 import {Button} from "../components/Button";
+import {darken} from "polished";
 
 export const Animation4 = () => {
   const wrapper = useRef(null);
@@ -31,7 +32,7 @@ export const Animation4 = () => {
     const ground = elements.getElementById('ground_2');
 
     gsap.set([...something.children, sunpath], {autoAlpha: 0});
-    gsap.set([filter, sky, ...stars.children, guy, girl, dog, ball, ...trees.children, mountains, trees, ...leaves1.children, ...leaves2.children, ...leaves3.children, sun, ground], {autoAlpha: 1});
+    gsap.set([filter, sky, ...stars.children, guy, ...girl.children, dog, ball, ...trees.children, mountains, trees, ...leaves1.children, ...leaves2.children, ...leaves3.children, sun, ground], {autoAlpha: 1});
     gsap.set(ball, {transformOrigin: '50% 50%'});
 
     tlFilter = gsap.timeline({defaults: {ease: 'slowMo', repeat: -1, yoyo: true, repeatDelay: 5}})

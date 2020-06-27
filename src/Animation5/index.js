@@ -22,7 +22,6 @@ export const Animation5 = () => {
     const hippo = elements.getElementById('hippo');
     const star = elements.getElementById('star');
     const elephant = elements.getElementById('elephant');
-    console.log("circle", circle)
 
     tl.to(circle, {morphSVG: hippo},"+=1")
         .to(circle, {morphSVG: star}, "+=1")
