@@ -12,8 +12,9 @@ function App() {
      <MainTitle>Animations 2020</MainTitle>
      <A.Animation3 />
      <A.Animation4 />
-     <A.Animation5 />
+     <A.Animation7 />
      <A.Animation6 />
+     <A.Animation5 />
     </Body>
   );
 }

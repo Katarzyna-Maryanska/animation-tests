@@ -5,8 +5,6 @@ export const StyledInput = styled.input`
   width: 25px;
   height: 25px;
   position: absolute;
-  left: 0;
-  top: 0;
   pointer-events: none;
   opacity: 0;
 
@@ -16,19 +14,18 @@ export const StyledInput = styled.input`
   }
 `;
 
-export const Container = styled.div`
+export const Container = styled.span`
   text-align: center;
   margin: auto;
 `;
 
 export const Wrapper = styled.div`
-  margin: 0 auto 3rem auto;
+  //margin: 0 auto;
   //margin: 0;
-  font-size: 0;
-  overflow: hidden;
-  //height: 100vh;
-  display: flex;
-  position: fixed;
-  height: 100%;
+  //font-size: 0;
+  //overflow: hidden;
+  //display: flex;
+  //position: fixed;
+  height: 100vh;
 `;
 

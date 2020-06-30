@@ -1,17 +1,15 @@
-import React, {useRef, useEffect} from "react";
+import React, {useEffect} from "react";
 import gsap from "gsap";
 
 import {Title, AnimationContainer} from "../../Typography";
-import {StyledInput, Wrapper, Container} from "./styles";
+import {StyledInput, Wrapper, Container} from "./styled";
 
 export const Animation5 = () => {
-  const wrapper = useRef(null);
-
   let tl;
-
   useEffect(() => {
       function onInputChange (e) {
-          gsap.to(els, {
+          tl = gsap.timeline()
+          tl.to(els, {
               stagger: {
                   grid: [rows, cols],
                   from: e.target.index,
@@ -26,8 +24,8 @@ export const Animation5 = () => {
       }
 
       let els = [];
-      const el = document.querySelector('#model');
-      const container = document.querySelector('#container');
+      const el = document.getElementById('model');
+      const container = document.getElementById('container');
       let width = el.offsetWidth;
       let height = el.offsetHeight;
       let cols = 0;
@@ -42,12 +40,12 @@ export const Animation5 = () => {
           cols = Math.floor(ww / width);
           rows = Math.floor(wh / height) - 1;
           els = [];
-          for (let y = 0; y < rows; y++) {
-              for (let x = 0; x < cols; x++) {
+          for (let i = 0; i < rows; i++) {
+              for (let j = 0; j < cols; j++) {
                   const _el = document.createElement('input');
                   _el.type = 'checkbox';
                   _el.addEventListener('change', onInputChange);
-                  _el.index = (x + y * cols);
+                  _el.index = (i + j * cols);
                   container.append(_el);
                   els.push(_el);
               }
@@ -64,8 +62,8 @@ export const Animation5 = () => {
 
   return (
     <AnimationContainer>
-      <Title>Click</Title>
-      <Wrapper ref={wrapper}>
+      <Title>Checked</Title>
+      <Wrapper>
         <StyledInput type="checkbox" id="model"/>
         <Container id="container"/>
       </Wrapper>

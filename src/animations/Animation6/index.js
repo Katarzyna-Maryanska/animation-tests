@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from "react";
 import gsap from "gsap";
 
 import {Title, AnimationContainer} from "../../Typography";
-import {Canvas, CanvasWrapper} from "./styles"
+import {Canvas, CanvasWrapper} from "./styled"
 import {Button} from "../../components/Button";
 
 export const Animation6 = () => {
