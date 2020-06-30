@@ -28,7 +28,7 @@ export const Title = styled.h2`
 `;
 
 export const Wrapper = styled.div`
-  margin-bottom: 3rem;
+  margin: 0 auto 3rem auto;
   & svg {
      width: ${props => props.width ? props.width : '70%'};
      height: auto;

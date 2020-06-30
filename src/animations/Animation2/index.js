@@ -2,8 +2,8 @@ import React, {useEffect} from "react";
 import { gsap } from "gsap";
 
 import { StyledText, StyledFlower } from "./styles";
-import {Title, FlexWrapper, AnimationContainer} from "../Typography";
-import {Button} from "../components/Button";
+import {Title, FlexWrapper, AnimationContainer} from "../../Typography";
+import {Button} from "../../components/Button";
 
 export const Animation2 = () => {
   let tl;

@@ -1,8 +1,8 @@
 import React, {useEffect, useRef} from "react";
 import { TweenMax } from "gsap";
 
-import {Title, Wrapper, AnimationContainer} from "../Typography";
-import {Button} from "../components/Button";
+import {Title, Wrapper, AnimationContainer} from "../../Typography";
+import {Button} from "../../components/Button";
 
 export const Animation1 = () => {
   const wrapper = useRef(null);

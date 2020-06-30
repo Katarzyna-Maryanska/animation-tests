@@ -1,10 +1,12 @@
 import React, {useRef, useEffect} from "react";
 import gsap from "gsap";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin.js";
 
 import {ReactComponent as Scene} from "./fun.svg";
-import {Title, Wrapper, AnimationContainer} from "../Typography";
-import {Button} from "../components/Button";
-import {darken} from "polished";
+import {Title, Wrapper, AnimationContainer} from "../../Typography";
+import {Button} from "../../components/Button";
+
+gsap.registerPlugin(MotionPathPlugin);
 
 export const Animation4 = () => {
   const wrapper = useRef(null);

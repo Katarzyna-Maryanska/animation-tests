@@ -2,8 +2,8 @@ import React, {useRef, useEffect} from "react";
 import gsap from "gsap";
 
 import {ReactComponent as Scene} from "./moon-scene.svg";
-import {Title, Wrapper, AnimationContainer} from "../Typography";
-import {Button} from "../components/Button";
+import {Title, Wrapper, AnimationContainer} from "../../Typography";
+import {Button} from "../../components/Button";
 
 export const Animation3 = () => {
   const wrapper = useRef(null);
