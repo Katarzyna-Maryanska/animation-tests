@@ -20,12 +20,6 @@ export const Container = styled.span`
 `;
 
 export const Wrapper = styled.div`
-  //margin: 0 auto;
-  //margin: 0;
-  //font-size: 0;
-  //overflow: hidden;
-  //display: flex;
-  //position: fixed;
   height: 100vh;
 `;
 

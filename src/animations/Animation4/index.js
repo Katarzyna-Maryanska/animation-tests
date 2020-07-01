@@ -29,6 +29,9 @@ export const Animation4 = () => {
     const leaves2 = elements.getElementById('leaves2');
     const leaves3 = elements.getElementById('leaves3');
     const mountains = elements.getElementById('mountains');
+    const vector_7 = elements.getElementById('Vector_7');
+    const vector_8 = elements.getElementById('Vector_8');
+    const vector_9 = elements.getElementById('Vector_9');
     const sun = elements.getElementById('sun');
     const sunpath = elements.getElementById('sunpath');
     const ground = elements.getElementById('ground_2');
@@ -49,6 +52,7 @@ export const Animation4 = () => {
     tlFilter.fromTo(filter, {x: '+=0', opacity: 0.3}, {duration: 5, x: '-=1000', autoAlpha: 0})
         .to(filter, {duration: 5, x: '-=0',opacity: 0.3, autoAlpha: 1, paused:true})
     tlSky.to(sky, {duration: 5, opacity: 0.3, fill: '#C0ECFF'},1)
+    tlSky.to([vector_7, vector_8, vector_9], {duration: 5, fill: '#F2F2F2'},1)
     tlSky.to(ground, {duration: 5, opacity: 0.3, fill: '#808689'},1)
     tlSun.to(sun, {duration: 10, motionPath:{
             path: sunpath,
