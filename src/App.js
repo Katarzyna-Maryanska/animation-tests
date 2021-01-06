@@ -14,7 +14,8 @@ function App() {
      <A.Animation4 />
      <A.Animation7 />
      <A.Animation6 />
-     <A.Animation5 />
+     {/*<A.Animation5 />*/}
+     <A.Animation8 />
     </Body>
   );
 }
